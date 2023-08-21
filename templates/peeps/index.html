@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chitter</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <h1>Chitter</h1>
+    <div>
+      <h2><a href="/peeps/new" class="button">New Peep</a></h2>
+    </div>
+    {% for peep in peeps %}
+    <div>
+      <h3>@{{peep.user_id}} {{peep.posted_on}}</h3>
+      <h3><a href="/peeps/{{peep.id}}">{{peep.peep}}</a></h3>
+    </div>
+    {% endfor %}
+  </body>
+</html>
