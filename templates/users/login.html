@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chitter</title>
+</head>
+<body>
+    <!-- login page -->
+    <h1>Login to Chitter</h1>
+    <form action="/login" method="POST">
+        <h3><label for="email">Email</label></h3>
+        <input required type="text" name="email" id="email">
+        <h3><label for="password">Password</label></h3>
+        <input required type="password" name="password" id="password">
+    </form>
+
+    <div>
+        <h2><a href="/users/new" class="button">New User</a></h2>
+    </div>
+    <div>
+        <h2><a href="/sessions/new" class="button">Login</a></h2>
+    </div>
+    <div>
+        <h2><a href="/peeps" class="button">View Peeps</a></h2>
+    </div>
+
+    
+</body>
+</html>

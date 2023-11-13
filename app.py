@@ -3,6 +3,7 @@ import os
 from flask import Flask, request, render_template
 from lib.database_connection import get_flask_database_connection
 from lib.peep_repository import PeepRepository
+from lib.user_repository import UserRepository
 
 
 # Create a new Flask app
@@ -10,8 +11,18 @@ app = Flask(__name__)
 
 # == Your Routes Here ==
 
+# a router for a login page
 
-@app.route('/peeps', methods=['GET'])
+
+@app.route('/login', methods=['GET'])
+def login():
+    connection = get_flask_database_connection(app)
+    repository = UserRepository(connection)
+    users = repository.all()
+    return render_template("login.html", users=users)
+
+
+@app.route('/', methods=['GET'])
 def all_peeps():
     connection = get_flask_database_connection(app)
     repository = PeepRepository(connection)

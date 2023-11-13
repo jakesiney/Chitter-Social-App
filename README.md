@@ -1,69 +1,21 @@
-# Flask HTML Web & Database Project Starter
+# Twitter Clone Project
 
-This is a starter project for you to use to start your Flask HTML web & database
-projects.
+## Overview
 
-It contains quite a lot of example code. You can use this to see how the various
-parts of the project work, or you can delete it and start from scratch.
+Welcome to the Twitter Clone project! This is a work in progress and is designed to showcase backend skills using Python, Flask, and PostgreSQL. The project focuses on implementing a simplified version of the popular social media platform Twitter.
 
-There are two videos to support:
+## Features
 
-* [A demonstration of setting up the project](https://www.youtube.com/watch?v=YStsRfMVx44&t=0s)
-* [A walkthrough of the project codebase](https://www.youtube.com/watch?v=YStsRfMVx44&t=314s) 
+- **User Authentication**: Users can sign up, log in, and log out securely.
+- **Tweet Creation**: Authenticated users can create tweets to share their thoughts.
+- **Timeline**: Users can view a timeline of tweets from people they follow.
+- **Follow/Unfollow**: Users can follow and unfollow other users to customize their timeline.
+- **User Profiles**: Each user has a profile page displaying their tweets and other relevant information.
 
-## Setup
+## Tech Stack
 
-```shell
-# Clone the repository to your local machine
-; git clone git@github.com:makersacademy/web-applications-in-python-project-starter-html.git YOUR_PROJECT_NAME
+- **Python**: The primary programming language used for the backend logic.
+- **Flask**: A lightweight web application framework for Python used to build the backend.
+- **PostgreSQL**: A powerful, open-source relational database management system.
+- **Psycopg**: A PostgreSQL adapter for Python to interact with the database.
 
-# Or, if you don't have SSH keys set up
-; git clone https://github.com/makersacademy/web-applications-in-python-project-starter-html.git YOUR_PROJECT_NAME
-
-# Enter the directory
-; cd YOUR_PROJECT_NAME
-
-# Install dependencies and set up the virtual environment
-; pipenv install
-
-# Activate the virtual environment
-; pipenv shell
-
-# Install the virtual browser we will use for testing
-; playwright install
-# If you have problems with the above, contact your coach
-
-# Create a test and development database
-; createdb YOUR_PROJECT_NAME
-; createdb YOUR_PROJECT_NAME_test
-
-# Open lib/database_connection.py and change the database names
-; open lib/database_connection.py
-
-# Seed the development database (ensure you have run `pipenv shell` first)
-; python seed_dev_database.py
-
-# Run the tests (with extra logging)
-; pytest -sv
-
-# Run the app
-; python app.py
-# Now visit http://localhost:5000/emoji in your browser
-```
-
-If you would like to remove the example code:
-
-```shell
-; ./remove_example_code.sh
-```
-
-
-<!-- BEGIN GENERATED SECTION DO NOT EDIT -->
-
----
-
-**How was this resource?**  
-[😫](https://airtable.com/shrUJ3t7KLMqVRFKR?prefill_Repository=makersacademy%2Fweb-applications-in-python-project-starter-html&prefill_File=README.md&prefill_Sentiment=😫) [😕](https://airtable.com/shrUJ3t7KLMqVRFKR?prefill_Repository=makersacademy%2Fweb-applications-in-python-project-starter-html&prefill_File=README.md&prefill_Sentiment=😕) [😐](https://airtable.com/shrUJ3t7KLMqVRFKR?prefill_Repository=makersacademy%2Fweb-applications-in-python-project-starter-html&prefill_File=README.md&prefill_Sentiment=😐) [🙂](https://airtable.com/shrUJ3t7KLMqVRFKR?prefill_Repository=makersacademy%2Fweb-applications-in-python-project-starter-html&prefill_File=README.md&prefill_Sentiment=🙂) [😀](https://airtable.com/shrUJ3t7KLMqVRFKR?prefill_Repository=makersacademy%2Fweb-applications-in-python-project-starter-html&prefill_File=README.md&prefill_Sentiment=😀)  
-Click an emoji to tell us.
-
-<!-- END GENERATED SECTION DO NOT EDIT -->
