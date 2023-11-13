@@ -18,8 +18,8 @@ app = Flask(__name__)
 def login():
     connection = get_flask_database_connection(app)
     repository = UserRepository(connection)
-    users = repository.all()
-    return render_template("login.html", users=users)
+    user = repository.getuser()
+    return render_template("login.html", user=user)
 
 
 @app.route('/', methods=['GET'])

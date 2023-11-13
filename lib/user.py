@@ -1,11 +1,12 @@
 class User:
     # We initialise with all of our attributes
     # Each column in the table should have an attribute here
-    def __init__(self, id, user_name, full_name, email):
+    def __init__(self, id, user_name, full_name, email, password):
         self.id = id
         self.user_name = user_name
         self.full_name = full_name
         self.email = email
+        self.password = password
 
     # This method allows our tests to assert that the objects it expects
     # are the objects we made based on the database records.
@@ -14,7 +15,7 @@ class User:
 
     # This method makes it look nicer when we print an Artist
     def __repr__(self):
-        return f"User({self.id}, {self.user_name}, {self.full_name}, {self.email})"
+        return f"User({self.id}, {self.user_name}, {self.full_name}, {self.email}, {self.password})"
 
     # These next two methods will be used by the controller to check if
     # books are valid and if not show errors to the user.

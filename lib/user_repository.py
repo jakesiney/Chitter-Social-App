@@ -8,11 +8,18 @@ class UserRepository:
 
     # Create a new user
     def create(self, user):
-        rows = self._connection.execute('INSERT INTO users (user_name, full_name, email) VALUES (%s, %s, %s) RETURNING id', [
-            user.user_name, user.full_name, user.email])
+        rows = self._connection.execute('INSERT INTO users (user_name, full_name, email, password) VALUES (%s, %s, %s, %s) RETURNING id', [
+            user.user_name, user.full_name, user.email, user.password])
         row = rows[0]
         user.id = row["id"]
         return user
+    # Get a user by their email and password
+
+    def getuser(self, email, password):
+        rows = self._connection.execute(
+            'SELECT * from users WHERE email = %s AND password = %s', [email, password])
+        row = rows[0]
+        return User(row["id"], row["user_name"], row["full_name"], row["email"])
 
     # # Retrieve all books
     # def all(self):

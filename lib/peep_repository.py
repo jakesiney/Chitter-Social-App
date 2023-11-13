@@ -11,7 +11,7 @@ class PeepRepository:
         peeps = []
         for row in rows:
             item = Peep(row["id"], row["posted_on"],
-                        row["peep"], row["user_id"])
+                        row["peep"], row["user_name"], row["user_id"])
             peeps.append(item)
         return peeps
 

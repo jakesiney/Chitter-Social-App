@@ -1,10 +1,11 @@
 class Peep:
     # We initialise with all of our attributes
     # Each column in the table should have an attribute here
-    def __init__(self, id, posted_on, peep, user_id):
+    def __init__(self, id, posted_on, peep, user_name, user_id):
         self.id = id
         self.posted_on = posted_on
         self.peep = peep
+        self.user_name = user_name
         self.user_id = user_id
 
     # This method allows our tests to assert that the objects it expects
@@ -14,7 +15,7 @@ class Peep:
 
     # This method makes it look nicer when we print an Artist
     def __repr__(self):
-        return f"Peep({self.id}, {self.posted_on}, {self.peep}, {self.user_id})"
+        return f"Peep({self.id}, {self.posted_on}, {self.peep}, {self.user_name}, {self.user_id})"
 
     # These next two methods will be used by the controller to check if
     # books are valid and if not show errors to the user.

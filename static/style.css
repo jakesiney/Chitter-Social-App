@@ -2,7 +2,7 @@ body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #000000; /* Twitter's background color */
+  background-color: #fff; /* Twitter's background color */
 }
 
 h1 {
@@ -15,11 +15,11 @@ h1 {
 
 h2,
 h3 {
-  color: rgb(255, 255, 255);
+  color: #000;
 }
 div {
-  background-color: rgb(0, 0, 0);
-  border: 1px solid #e1e8ed; /* Twitter's border color */
+  background-color: #fff;
+  border: 1px solid #000; /* Twitter's border color */
   margin: 10px auto;
   padding: 10px;
   border-radius: 12px;

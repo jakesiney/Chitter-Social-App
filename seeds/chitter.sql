@@ -24,17 +24,21 @@ CREATE TABLE peeps (
     id SERIAL PRIMARY KEY,
     posted_on date,
     peep VARCHAR(255),
+    user_name VARCHAR(255),
     user_id int,
     constraint fk_user foreign key(user_id)
         references users(id)
         on delete cascade
 );
 -- Finally, we add any records that are needed for the tests to run
-INSERT INTO users (user_name, full_name, email, password) VALUES ('tim.cook', 'Tim Cook', 'tim@apple.com', 'pa55word');
-INSERT INTO users (user_name, full_name, email, password) VALUES ('elon.musk', 'Elon Musk', 'elon@spacex.com', 'pa55word');
-INSERT INTO users (user_name, full_name, email, password) VALUES ('mark.zuckerburg', 'Mark Zuckerberg', 'mark@facebook.com', 'pa55word');
+INSERT INTO users (user_name, full_name, email, password) VALUES ('tim.cook', 'Tim Cook', 'tim@apple.com', '12345');
+INSERT INTO users (user_name, full_name, email, password) VALUES ('elon.musk', 'Elon Musk', 'elon@spacex.com', '12345');
+INSERT INTO users (user_name, full_name, email, password) VALUES ('mickey.mouse', 'Mickey Mouse', 'mickey@email.com', '12345');
+INSERT INTO users (user_name, full_name, email, password) VALUES ('test.user', 'Test User', 'test@email.com', '12345');
 
-INSERT INTO peeps (posted_on, peep, user_id) VALUES ('08/15/2023','Blah blah blah blah blah etc.....', 1);
-INSERT INTO peeps (posted_on, peep, user_id) VALUES ('08/16/2023', 'Another blah blah peep etc.....', 2);
-INSERT INTO peeps (posted_on, peep, user_id) VALUES ('08/17/2023', 'Peep peep peep peep peep etc.....', 3);
+INSERT INTO peeps (posted_on, peep, user_name, user_id) VALUES ('08/15/2023','Blah blah blah blah blah etc.....', 'tim.cook', 1);
+INSERT INTO peeps (posted_on, peep, user_name, user_id) VALUES ('08/16/2023', 'Another blah blah peep etc.....', 'elon.musk', 2);
+INSERT INTO peeps (posted_on, peep, user_name, user_id) VALUES ('08/17/2023', 'Peep peep peep peep peep etc.....', 'mickey.mouse', 3);
+INSERT INTO peeps (posted_on, peep, user_name, user_id) VALUES ('08/17/2023', 'Cat pics', 'test.user', 4);
+INSERT INTO peeps (posted_on, peep, user_name, user_id) VALUES ('08/17/2023', 'Food pics', 'test.user', 4);
 
