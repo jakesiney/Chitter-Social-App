@@ -13,13 +13,20 @@ class UserRepository:
         row = rows[0]
         user.id = row["id"]
         return user
-    # Get a user by their email and password
 
-    def getuser(self, email, password):
+    # def getuser(self, email, password):
+    #     rows = self._connection.execute(
+    #         'SELECT * from users WHERE email = %s AND password = %s', [email, password])
+    #     row = rows[0]
+    #     return User(row["id"], row["user_name"], row["full_name"], row["email"])
+
+    def validate_login(self, user_name, password):
         rows = self._connection.execute(
-            'SELECT * from users WHERE email = %s AND password = %s', [email, password])
-        row = rows[0]
-        return User(row["id"], row["user_name"], row["full_name"], row["email"])
+            'SELECT * from users WHERE user_name = %s AND password = %s', [user_name, password])
+        if len(rows) == 1:
+            return True
+        else:
+            return False
 
     # # Retrieve all books
     # def all(self):
