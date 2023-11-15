@@ -4,7 +4,9 @@ from flask_login import LoginManager, login_user, login_required, logout_user, c
 from lib.database_connection import get_flask_database_connection
 from lib.peep_repository import PeepRepository
 from lib.user_repository import UserRepository
+from lib.peep import Peep
 import dotenv
+from datetime import datetime
 
 
 login_manager = LoginManager()
@@ -56,8 +58,11 @@ def create_post():
     connection = get_flask_database_connection(app)
     repository = PeepRepository(connection)
     peep = request.form['peep']
+    posted_on = datetime.now()
     user_id = current_user.id
-    repository.create_new_peep(peep, user_id)
+    user_name = current_user.user_name
+    post = Peep(None, posted_on, peep, user_name, user_id)
+    repository.create_new_peep(post)
     return redirect('/home')
 
 

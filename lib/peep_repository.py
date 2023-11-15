@@ -16,8 +16,8 @@ class PeepRepository:
         return peeps
 
     def create_new_peep(self, peep):
-        rows = self._connection.execute('INSERT INTO peeps (posted_on, peep, user_id) VALUES (%s, %s, %s) RETURNING id', [
-            peep.posted_on, peep.peep, peep.peep_id])
+        rows = self._connection.execute('INSERT INTO peeps (posted_on, peep, user_name, user_id) VALUES (%s, %s, %s, %s) RETURNING id', [
+            peep.posted_on, peep.peep, peep.user_name, peep.user_id])
         row = rows[0]
         peep.id = row["id"]
         return peep
