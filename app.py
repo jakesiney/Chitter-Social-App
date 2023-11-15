@@ -19,7 +19,7 @@ login_manager.init_app(app)
 def load_user(user_id):
     connection = get_flask_database_connection(app)
     repository = UserRepository(connection)
-    return repository.get_by_username(user_id)
+    return repository.get_by_id(int(user_id))
 
 
 @app.route('/', methods=['GET'])

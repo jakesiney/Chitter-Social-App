@@ -1,4 +1,7 @@
-class User:
+from flask_login import UserMixin
+
+
+class User(UserMixin):
     # We initialise with all of our attributes
     # Each column in the table should have an attribute here
     def __init__(self, id, user_name, full_name, email, password):
@@ -9,8 +12,16 @@ class User:
         self.password = password
 
     @property
+    def is_authenticated(self):
+        return True
+
+    @property
     def is_active(self):
         return True
+
+    @property
+    def is_anonymous(self):
+        return False
 
     def get_id(self):
         return str(self.id)

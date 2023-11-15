@@ -8,6 +8,13 @@
   </head>
   <body>
     <h1>Chitter</h1>
+
+    {% if current_user.is_authenticated %}
+    <h2>Welcome, {{ current_user.user_name }}</h2>
+    {% else %}
+    <h2>Welcome, Guest</h2>
+    {% endif %}
+
     
     <div>
       <h2><a href="/peeps/new" class="button">New Peep</a></h2>

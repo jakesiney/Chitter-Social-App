@@ -31,6 +31,15 @@ class UserRepository:
         else:
             return False
 
+    def get_by_id(self, id):
+        rows = self._connection.execute(
+            'SELECT * from users WHERE id = %s', [id])
+        if rows:
+            row = rows[0]
+            return User(row["id"], row["user_name"], row["full_name"], row["email"], row["password"])
+        else:
+            return None
+
     # # Retrieve all books
     # def all(self):
     #     rows = self._connection.execute('SELECT * from books')
