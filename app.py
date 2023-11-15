@@ -1,11 +1,25 @@
 import os
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, session, flash
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from lib.database_connection import get_flask_database_connection
 from lib.peep_repository import PeepRepository
 from lib.user_repository import UserRepository
+import dotenv
 
+
+login_manager = LoginManager()
+dotenv.load_dotenv()
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    connection = get_flask_database_connection(app)
+    repository = UserRepository(connection)
+    return repository.get_by_username(user_id)
 
 
 @app.route('/', methods=['GET'])
@@ -21,6 +35,10 @@ def login():
     password = request.form['password']
     valid = repository.validate_login(user_name, password)
     if valid:
+        user = repository.get_by_username(user_name)
+        login_user(user)
+        session['user_name'] = user_name
+        flash('Logged in successfully, welcome to Chitter')
         return redirect('/home')
     else:
         raise Exception("Invalid login, try again")

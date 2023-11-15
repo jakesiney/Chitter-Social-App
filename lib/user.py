@@ -8,6 +8,13 @@ class User:
         self.email = email
         self.password = password
 
+    @property
+    def is_active(self):
+        return True
+
+    def get_id(self):
+        return str(self.id)
+
     # This method allows our tests to assert that the objects it expects
     # are the objects we made based on the database records.
     def __eq__(self, other):

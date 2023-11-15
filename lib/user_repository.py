@@ -14,11 +14,14 @@ class UserRepository:
         user.id = row["id"]
         return user
 
-    # def getuser(self, email, password):
-    #     rows = self._connection.execute(
-    #         'SELECT * from users WHERE email = %s AND password = %s', [email, password])
-    #     row = rows[0]
-    #     return User(row["id"], row["user_name"], row["full_name"], row["email"])
+    def get_by_username(self, user_name):
+        rows = self._connection.execute(
+            'SELECT * from users WHERE user_name = %s', [user_name])
+        if rows:
+            row = rows[0]
+            return User(row["id"], row["user_name"], row["full_name"], row["email"], row["password"])
+        else:
+            return None
 
     def validate_login(self, user_name, password):
         rows = self._connection.execute(
