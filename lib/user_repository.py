@@ -5,7 +5,7 @@ class UserRepository:
     def __init__(self, connection):
         self._connection = connection
 
-    def create(self, user):
+    def create_user(self, user):
         rows = self._connection.execute('INSERT INTO users (user_name, first_name, last_name, email, password) VALUES (%s, %s, %s, %s, %s) RETURNING id', [
             user.user_name, user.first_name, user.last_name, user.email, user.password])
         row = rows[0]

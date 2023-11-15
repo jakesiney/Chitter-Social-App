@@ -4,6 +4,7 @@ from flask_login import LoginManager, login_user, login_required, logout_user, c
 from lib.database_connection import get_flask_database_connection
 from lib.peep_repository import PeepRepository
 from lib.user_repository import UserRepository
+from lib.user import User
 from lib.peep import Peep
 import dotenv
 from datetime import datetime
@@ -63,6 +64,26 @@ def create_post():
     user_name = current_user.user_name
     post = Peep(None, posted_on, peep, user_name, user_id)
     repository.create_new_peep(post)
+    return redirect('/home')
+
+
+@app.route('/signup', methods=['GET'])
+def signup():
+    return render_template('signup.html')
+
+
+@app.route('/createuser', methods=['POST'])
+def create_user():
+    connection = get_flask_database_connection(app)
+    repository = UserRepository(connection)
+    user_name = request.form['user_name']
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    email = request.form['email']
+    password = request.form['password']
+    user = User(None, user_name, first_name, last_name, email, password)
+    repository.create_user(user)
+    login_user(user)
     return redirect('/home')
 
 
