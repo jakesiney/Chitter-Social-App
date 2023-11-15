@@ -2,14 +2,12 @@ from lib.user import User
 
 
 class UserRepository:
-    # We initialise with a database connection
     def __init__(self, connection):
         self._connection = connection
 
-    # Create a new user
     def create(self, user):
-        rows = self._connection.execute('INSERT INTO users (user_name, full_name, email, password) VALUES (%s, %s, %s, %s) RETURNING id', [
-            user.user_name, user.full_name, user.email, user.password])
+        rows = self._connection.execute('INSERT INTO users (user_name, first_name, last_name, email, password) VALUES (%s, %s, %s, %s, %s) RETURNING id', [
+            user.user_name, user.first_name, user.last_name, user.email, user.password])
         row = rows[0]
         user.id = row["id"]
         return user
@@ -19,7 +17,7 @@ class UserRepository:
             'SELECT * from users WHERE user_name = %s', [user_name])
         if rows:
             row = rows[0]
-            return User(row["id"], row["user_name"], row["full_name"], row["email"], row["password"])
+            return User(row["id"], row["user_name"], row["first_name"], row["last_name"], row["email"], row["password"])
         else:
             return None
 
@@ -36,7 +34,7 @@ class UserRepository:
             'SELECT * from users WHERE id = %s', [id])
         if rows:
             row = rows[0]
-            return User(row["id"], row["user_name"], row["full_name"], row["email"], row["password"])
+            return User(row["id"], row["user_name"], row["first_name"], row["last_name"], row["email"], row["password"])
         else:
             return None
 

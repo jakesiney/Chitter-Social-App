@@ -14,7 +14,8 @@ CREATE SEQUENCE IF NOT EXISTS users_id_seq;
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     user_name VARCHAR(255),
-    full_name VARCHAR(255),
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
     email VARCHAR(255),
     password VARCHAR(255)
 );
@@ -31,10 +32,10 @@ CREATE TABLE peeps (
         on delete cascade
 );
 -- Finally, we add any records that are needed for the tests to run
-INSERT INTO users (user_name, full_name, email, password) VALUES ('tim.cook', 'Tim Cook', 'tim@apple.com', '12345');
-INSERT INTO users (user_name, full_name, email, password) VALUES ('elon.musk', 'Elon Musk', 'elon@spacex.com', '12345');
-INSERT INTO users (user_name, full_name, email, password) VALUES ('mickey.mouse', 'Mickey Mouse', 'mickey@email.com', '12345');
-INSERT INTO users (user_name, full_name, email, password) VALUES ('test.user', 'Test User', 'test@email.com', '12345');
+INSERT INTO users (user_name, first_name, last_name, email, password) VALUES ('tim.cook', 'Tim', 'Cook', 'tim@apple.com', '12345');
+INSERT INTO users (user_name, first_name, last_name, email, password) VALUES ('elon.musk', 'Elon', 'Musk', 'elon@spacex.com', '12345');
+INSERT INTO users (user_name, first_name, last_name, email, password) VALUES ('mickey.mouse', 'Mickey', 'Mouse', 'mickey@email.com', '12345');
+INSERT INTO users (user_name, first_name, last_name, email, password) VALUES ('test.user', 'Test', 'User', 'test@email.com', '12345');
 
 INSERT INTO peeps (posted_on, peep, user_name, user_id) VALUES ('08/15/2023','Blah blah blah blah blah etc.....', 'tim.cook', 1);
 INSERT INTO peeps (posted_on, peep, user_name, user_id) VALUES ('08/16/2023', 'Another blah blah peep etc.....', 'elon.musk', 2);
