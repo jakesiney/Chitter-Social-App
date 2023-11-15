@@ -44,12 +44,36 @@ def login():
         raise Exception("Invalid login, try again")
 
 
+@app.route('/newpost', methods=['GET'])
+@login_required
+def new_post():
+    return render_template('peep.html')
+
+
+@app.route('/createpost', methods=['POST'])
+@login_required
+def create_post():
+    connection = get_flask_database_connection(app)
+    repository = PeepRepository(connection)
+    peep = request.form['peep']
+    user_id = current_user.id
+    repository.create_new_peep(peep, user_id)
+    return redirect('/home')
+
+
 @app.route('/home', methods=['GET'])
 def all_peeps():
     connection = get_flask_database_connection(app)
     repository = PeepRepository(connection)
     peeps = repository.all()
     return render_template("home.html", peeps=peeps)
+
+
+@app.route('/logout', methods=['POST'])
+@login_required
+def logout():
+    logout_user()
+    return redirect('/')
 
 
 if __name__ == '__main__':

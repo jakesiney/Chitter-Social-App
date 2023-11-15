@@ -11,15 +11,20 @@
 
     {% if current_user.is_authenticated %}
     <h2>Welcome, {{ current_user.user_name }}</h2>
+    <form action="/logout" method="post">
+        <input type="submit" value="Logout">
+    </form>
     {% else %}
     <h2>Welcome, Guest</h2>
+    <form action="/" method="get">
+        <input type="submit" value="Login">
+    </form>
     {% endif %}
-
     
-    <div>
-      <h2><a href="/peeps/new" class="button">New Peep</a></h2>
-    </div>
-    {% for peep in peeps %}
+    {% if current_user.is_authenticated %}
+      <h2><a href="/newpost" class="button">Post</a></h2>
+    {% endif %}
+    {% for peep in peeps|reverse %}
     <div>
       <h3>@{{peep.user_name}} {{peep.posted_on}}</h3>
       <h3><a href="/peeps/{{peep.id}}">{{peep.peep}}</a></h3>
