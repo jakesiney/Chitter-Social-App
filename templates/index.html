@@ -3,16 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/login.css">
   <title>Chitter</title>
 </head>
 <body>
-  <div class="login_container">
-    <h1>Login to Chitter</h1>
-    <form action="/login" method="post">
-        <input type="text" name="user_name" placeholder="Username">
-        <input type="text" name="password" placeholder="Password">
-        <button type="submit">Login</button>
-    </form>
-    <p>Don't have an account? <a href="/signup">Sign up</a></p>
+<div class="login_container">
+    <form action="/login" method="post" class="form">
+      <p class="form-title">Sign in to Chitter</p>
+       <div class="input-container">
+         <input name="user_name" placeholder="Enter username" type="username">
+         
+     </div>
+     <div class="input-container">
+         <input name="password" placeholder="Enter password" type="password">
+
+       </div>
+        <button class="submit" type="submit">
+       Sign in
+     </button>
+
+     <p class="signup-link">
+       No account?
+       <a href="/signup">Sign up</a>
+     </p>
+  </form>
+</div> 
   </body>
 </html>
