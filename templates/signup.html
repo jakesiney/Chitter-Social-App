@@ -3,22 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/signup.css">
     <title>Create an account</title>
 </head>
 <body>
-    <h1>Create an account</h1>
-    <form action="/createuser" method="post">
-        <input type="text" name="user_name" placeholder="Username">
-        <br>
-        <input type="text" name="first_name" placeholder="First Name">
-        <br>
-        <input type="text" name="last_name" placeholder="Last Name">
-        <br>
-        <input type="text" name="password" placeholder="Password">
-        <br>
-        <input type="text" name="email" placeholder="Email">
-        <br>
-        <button type="submit">Submit</button>
+ 
+    <div class="signup-container">
+    <form action="/createuser" class="form" method="post">
+        <p class="title">Register </p>
+        <p class="message">Signup now and get full access to our app. </p>
+            <div class="flex">
+            <label>
+                <input required="" placeholder="" type="text" class="input" name="first_name">
+                <span>Firstname</span>
+            </label>
+    
+            <label>
+                <input required="" placeholder="" type="text" class="input" name="last_name">
+                <span>Lastname</span>
+            </label>
+        </div>
+        <label>
+            <input required="" placeholder="" type="text" class="input" name="user_name">
+            <span>Username</span>
+        </label>
+        <label>
+            <input required="" placeholder="" type="email" class="input" name="email">
+            <span>Email</span>
+        </label> 
+        <label>
+            <input required="" placeholder="" type="password" class="input" name="password">
+            <span>Password</span>
+        </label>
+        <!-- <label>
+            <input required="" placeholder="" type="password" class="input">
+            <span>Confirm password</span>
+        </label> -->
+        <button class="submit">Submit</button>
+        <p class="signin">Already have an acount ? <a href="/">Signin</a> </p>
     </form>
+    </div>
 </body>
 </html>
